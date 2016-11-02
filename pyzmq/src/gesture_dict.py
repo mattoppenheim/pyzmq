@@ -16,6 +16,7 @@ class GestureDict():
         self.dict['roll_max'] = 2
         self.dict['duration_min'] = 1
         self.dict['duration_max'] = 2
+        print('gesture_dict created')
 
     def get_dict(self):
         return self.dict
@@ -27,6 +28,9 @@ class GestureDict():
     def make_json(self):
         ''' return the json form of self.dict '''
         return json.dumps(self.dict)
+    
+    def hello(self):
+        print('hello from gesture_dict')
     
     def update_dict(self, **kwargs):
         ''' update dict with kwargs '''
