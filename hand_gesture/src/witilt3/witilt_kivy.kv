@@ -1,0 +1,73 @@
+# File name: witilt_kivy.kv
+#:kivy 1.7.0
+
+<MyBoxLayout>
+	acc_graph: acc_graph
+	x_label: x_label
+	y_label: y_label
+	z_label: z_label
+	r_label: r_label
+	b_label: b_label 
+	label_count: label_count
+	messages_label: messages_label
+	send_witilt_button: send_witilt_button
+	
+	BoxLayout:
+		orientation: 'vertical'
+		BoxLayout:
+			orientation: 'horizontal'
+			text_input: text_input
+			Button:
+				id: send_witilt_button
+				text: 'send to witilt'
+				on_press: root.button_send_press(text_input.text)
+			TextInput:
+				id: text_input		
+		Button:
+			text: 'B2'
+			on_press: root.button2_press(*args)
+		BoxLayout:
+			orientation: 'horizontal'
+			Label:
+				id: label_count
+			Label:
+				text: 'x'
+				size_hint: (0.1,1)
+			Label:
+				id: x_label
+			Label:
+				text: 'y'
+				size_hint: (0.1,1)
+			Label:
+				id: y_label
+			Label:
+				text: 'z'
+				size_hint: (0.1,1)
+			Label:
+				id: z_label
+			Label:
+				text: 'r'
+				size_hint: (0.1,1)
+			Label:
+				id: r_label
+			Label:
+				id: b_label
+		BoxLayout:
+			orientation: 'horizontal'          
+		Label:
+			id: messages_label
+		Graph:
+			id: acc_graph
+			size_hint: (1, 4)
+			x_grid_label: True
+			y_grid_label: True
+			x_grid: True
+			y_grid: True
+			ymin: -3
+			ymax: +3
+			y_ticks_major: 1
+			x_ticks_major: 100
+			xlabel:'sample'
+			ylabel: 'g'
+			xmin: 0
+			xmax: 300
