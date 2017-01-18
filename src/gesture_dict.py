@@ -5,20 +5,20 @@ Created on 25 Oct 2016
 ordered dictionary describing hand gesture
 '''
 from collections import OrderedDict
+import logging
 import json
 
 class GestureDict():
     def __init__(self):
         self.dict = OrderedDict()
-        self.dict['pitch_min'] = 1
-        self.dict['pitch_max'] = 2
-        self.dict['roll_min'] = 1
-        self.dict['roll_max'] = 2
-        self.dict['duration_min'] = 1
-        self.dict['duration_max'] = 2
-        print('gesture_dict created')
+        self.dict['magnitude_min'] = 20
+        self.dict['magnitude_max'] = 30
+        self.dict['filter_length'] = 100
+        self.dict['events'] = 1
+        logging.basicConfig(level=logging.DEBUG, format='%(message)s')
+        logging.info('gesture_dict created')
 
-    def get_gesture(self):
+    def get_dict(self):
         return self.dict
     
     def load_json(self, json_obj):
@@ -29,10 +29,12 @@ class GestureDict():
         ''' return the json form of self.dict '''
         return json.dumps(self.dict)
     
+    def hello(self):
+        print('hello from gesture_dict')
+    
     def update_dict(self, **kwargs):
         ''' update dict with kwargs '''
-        print('\n')
         for key, value in kwargs.items():
-            print('key {}, value {}'.format(key,value))
+            logging.info('key {}, value {}'.format(key,value))
             self.dict[key] = value
             
